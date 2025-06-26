@@ -1,56 +1,55 @@
 ```markdown
 # Aigeon AI Real-Time Web Search
 
-Aigeon AI Real-Time Web Search is a Python-based server application designed to provide real-time organic search results from across the web. Leveraging advanced search parameters and geo-targeting, this application supports Google Search operators and offers both single and batch search capabilities.
+Aigeon AI Real-Time Web Search is a Python-based server application designed to provide real-time organic search results from across the web. This application leverages advanced search parameters and geo-targeting to deliver precise and relevant search outcomes. It supports a wide range of Google Advanced Search operators, making it a powerful tool for retrieving web data efficiently.
 
 ## Features Overview
 
-- **Real-Time Search:** Fetches organic search results in real-time using advanced search parameters.
-- **Geo-Targeting:** Supports city-level geo-targeting to simulate searches from specific locations.
-- **Google Search Operators:** Utilizes Google Advanced Search operators such as `inurl:`, `site:`, `intitle:`, etc.
-- **Batch Processing:** Capable of handling up to 100 search queries in a single request for efficient batch processing.
+- **Real-Time Search**: Perform real-time searches across the web with support for advanced Google search parameters.
+- **Geo-Targeting**: Customize search results based on specific geographic locations, enhancing the relevance of search outcomes.
+- **Advanced Search Operators**: Utilize Google Advanced Search operators such as `inurl:`, `site:`, `intitle:`, etc., for more refined search results.
+- **Batch Processing**: Execute multiple search queries in a single request, optimizing performance and reducing latency.
 
 ## Main Features and Functionality
 
-1. **Real-Time Organic Search:**
-   - The application provides real-time search results by interfacing with a third-party API.
-   - Supports various Google Search parameters, including language (`hl`), region (`gl`), and advanced search options (`tbs`).
+### Real-Time Search with Custom Parameters
 
-2. **Geo-Targeting and Localization:**
-   - Allows searches to be conducted from specific locations, enhancing the relevance of search results based on geographic context.
-   - Users can specify the location at the city level to mimic real user searches.
+The application provides a `search` function that allows users to perform real-time searches with a variety of customizable parameters. Users can specify:
 
-3. **Batch Search Capability:**
-   - Offers a high-performance endpoint for processing multiple search queries simultaneously.
-   - Designed to handle up to 100 queries in a single request, making it suitable for applications requiring bulk data retrieval.
+- **Search Query (`q`)**: The main search term or phrase.
+- **Number of Results (`num`)**: The maximum number of search results to return.
+- **Pagination (`start`)**: The number of results to skip, useful for paginating through results.
+- **Geographic Location (`gl`)**: The country or region for the search query.
+- **Language (`hl`)**: The language preference for the search.
+- **Advanced Search Parameters (`tbs`)**: Additional search parameters for more specific queries.
+- **Origin Location (`location`)**: Simulate search origin from a specific city for more localized results.
+- **Auto-Correction Exclusion (`nfpr`)**: Option to exclude auto-corrected query results.
 
-## API Endpoints or Main Functions Description
+### Batch Search Capability
+
+The `batch_search` function allows users to perform up to 100 search queries in a single request. This feature is designed for high-performance scenarios where multiple search queries need to be processed simultaneously, providing a fast and efficient way to gather search data.
+
+## Main Functions Description
 
 ### `search`
 
-- **Description:** Retrieves real-time organic search results with support for various Google Search parameters and geo-targeting.
-- **Parameters:**
-  - `q` (str): Search query.
-  - `num` (Union[int, float], optional): Maximum number of results to return.
-  - `start` (Union[int, float], optional): Number of results to skip (for pagination).
-  - `gl` (str, optional): Country/region for the query.
-  - `hl` (str, optional): Language for the search.
-  - `tbs` (str, optional): Advanced search parameters.
-  - `location` (str, optional): Origin location of the search.
-  - `nfpr` (str, optional): Exclude results of auto-corrected queries.
-- **Returns:** A dictionary containing the search results.
+- **Purpose**: To retrieve real-time organic search results with support for advanced Google search parameters and geo-targeting.
+- **Parameters**:
+  - `q`: The search query string.
+  - `num`: Maximum number of results to return (optional).
+  - `start`: Number of results to skip for pagination (optional).
+  - `gl`: Country/region code for the search (optional).
+  - `hl`: Language code for the search (optional).
+  - `tbs`: Advanced search parameters (optional).
+  - `location`: City-level location for search origin (optional).
+  - `nfpr`: Flag to exclude auto-corrected results (optional).
+- **Returns**: A dictionary containing the search results.
 
 ### `batch_search`
 
-- **Description:** Provides a high-speed endpoint for retrieving organic search results for up to 100 queries in a single request.
-- **Parameters:** None specified in the function signature.
-- **Returns:** A dictionary containing the batch search results.
+- **Purpose**: To perform multiple search queries in a single request, supporting up to 100 queries at once.
+- **Parameters**: None (the function is designed to handle batch processing internally).
+- **Returns**: A dictionary containing the batch search results.
 
-## Usage
-
-The application is designed to be run as a server using the `FastMCP` framework, which facilitates communication over standard input/output. The primary functions, `search` and `batch_search`, are exposed as tools within this framework, allowing for seamless integration and execution.
-
----
-
-This README provides a comprehensive overview of the Aigeon AI Real-Time Web Search application, highlighting its capabilities and usage. For further details or to contribute, please refer to the repository documentation and codebase.
+This application is ideal for developers and businesses looking to integrate real-time web search capabilities into their projects, offering flexibility and precision in search operations.
 ```
